@@ -1,0 +1,33 @@
+nginx版本1.46
+修改hosts文件
+sudo vim /etc/hosts
+添加：127.0.0.1	www.dev.com
+在/etc/nginx/目录下有两个文件sites-available和sites-enabled
+sites-available下的是实际配置文件，默认有default，复制一个:
+sudo mv default ./www.dev.com
+复制default文件，改名为hosts中配置的www.dev.com
+修改文件内容：
+server {
+	listen 80; #监听端口
+	root /home/kevin/Workspace/html/advanced/frontend/web;	#项目存放目录
+	index index.php index.html index.htm; #默认访问文件
+	server_name www.dev.com; #服务器名称
+	location / {
+		try_files $uri $uri/ /index.php?$args;
+	}
+	location ~ \.php$ {
+		# 默认的fastcgi.conf文件实际上并没有，指向的是fastcgi_params
+		# include fastcgi.conf
+		include fastcgi_params;
+		fastcgi_pass	127.0.0.1:9000;
+	}
+	location ~ /\.(ht|svn|git) {
+		deny all; 
+	}
+}
+sites-enabled下的是sites-available内文件的软链接，
+这里将刚刚配置好的文件在这里创建一个对应的软链接：
+sudo ln -s /etc/nginx/sites-available/www.dev.com /etc/nginx/sites-enabled/www.dev.com
+配置完成之后，测试成功
+sudo /etc/init.d/nginx configtest
+sudo service nginx reload	#加载配置项
