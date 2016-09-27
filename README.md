@@ -2,25 +2,20 @@
 学习中或将打算学习的
 
 ## PHP Framework
-1. [YII 2](https://github.com/yiisoft/yii2)
-2. [CodeIgniter](https://github.com/bcit-ci/CodeIgniter)
-3. [Laravel](https://github.com/laravel/laravel)
+1. [Symfony](https://github.com/symfony/symfony)
+2. [Laravel](https://github.com/laravel/laravel)
+3. [YII 2](https://github.com/yiisoft/yii2)
 
-## JavaScript
-1. [NativeScript](https://github.com/NativeScript/NativeScript)
-2. [artDialog](https://github.com/aui/artDialog)
-3. [iCheck](https://github.com/fronteed/icheck)
-4. [togetherjs](https://github.com/mozilla/togetherjs)
-5. [video.js](https://github.com/videojs/video.js)
-6. [LhgCalendar](https://github.com/yiqing-95/LhgCalendar)
+## JavaScript Framework
+1. [Vuejs](https://github.com/vuejs/vue)
+2. [Meteor](https://github.com/meteor/meteor)
 
-## Service
-* [Pomelo](https://github.com/NetEase/pomelo)
-
-## Tool & Software
-* [composer](https://github.com/5-say/composer-doc-cn)
-* [ijkplayer](https://github.com/Bilibili/ijkplayer)
-* [NodeBB](https://github.com/NodeBB/NodeBB)
+## JavaScript Components
+1. [artDialog](https://github.com/aui/artDialog)
+2. [iCheck](https://github.com/fronteed/icheck)
+3. [togetherjs](https://github.com/mozilla/togetherjs)
+4. [video.js](https://github.com/videojs/video.js)
+5. [LhgCalendar](https://github.com/yiqing-95/LhgCalendar)
 
 ## Resources
 * [YII 2权威指南](http://www.yiichina.com/doc/guide/2.0)
