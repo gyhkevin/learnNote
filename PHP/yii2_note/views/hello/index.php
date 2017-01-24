@@ -14,3 +14,21 @@ use yii\helpers\HtmlPurifier;
 <?php $this->beginBlock('block1');?>
 <h1>index</h1>
 <?php $this->endBlock();?>
+
+<!-- 片段缓存 -->
+<?php 
+	// 缓存时间
+	$duration = 15;
+	// 缓存依赖
+	$dependency = [
+		'class' => 'yii\caching\FileDependency',
+		'fileName' => 'hw.txt'
+	];
+	// 缓存开关
+	$enabled = false;
+?>
+<?php if($this->beginCache('cache_div',['enabled'=>$enabled])){?>
+<div id="cache_div">
+	<div>被缓存的区域</div>
+</div>
+<?php $this->endCache();}?>

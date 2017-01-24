@@ -13,6 +13,78 @@ class HelloController extends Controller
 
 	public $layout = 'common';
 
+	function behaviors()
+	{
+		/*return [
+			[
+				'class'=>'yii\filters\PageCache',
+				'duration'=>1000,
+				'only'=>['index'],
+				'dependency'=>[
+					'class'=>'yii\caching\FileDependency',
+					'fileName'=>'hw.txt'
+				]
+			]
+		];*/
+		// 文件被修改时，通过判断last-modifiy和Etag，服务器决定是否重新获取数据给浏览器
+		// 如果两者中任意一个没有改变，那么返回304，使用浏览器内的缓存
+		return [
+			[
+				'class'=>'yii\filters\HttpCache',
+				'lastModified'=>function(){
+					return filemtime('hw.txt');
+					// return 1432817564;
+				},
+				'etagSeed'=>function(){
+					$fp = fopen('hw.txt', 'r');
+					$title = fgets($fp);
+					fclose($fp);
+					return $title;
+					// return 'etagSeed2';
+				}
+			]
+		];
+	}
+	// cache
+	function actionCache()
+	{
+		$cache = \YII::$app->cache();
+		// 写入数据，15秒后过期
+		$cache->add('key1', 'hello world!', 15);
+		// 修改缓存
+		$cache->set('key1', 'hello world2');
+		// 删除缓存
+		$cache->delete('key1');
+		// 清空缓存
+		$cache->flush();
+		$data = $cache->get('key1');
+		var_dump($data);
+
+		// 文件依赖
+		$dependency = new \yii\caching\FileDependency(['filename'=>'hw.txt']);
+		$cache->add('file_key','hello world!', 3000, $dependency);
+		var_dump($cache->get('file_key'));
+
+		// 表达式依赖
+		$dependency = new \yii\caching\ExpressionDependency(
+			['expression'=>'\YII::$app->request->get("name")']
+		);
+		$cache->add('expression_key','hello world!', 3000, $dependency);
+		var_dump($cache->get('expression_key'));
+
+		// DB依赖
+		$dependency = new \yii\caching\DbDependency(
+			['sql'=>'SELECT count(*) FROM yii.order']
+		);
+		$cache->add('db_key','hello world!', 3000, $dependency);
+		var_dump($cache->get('db_key'));
+
+		// 文件被修改时，通过判断last-modifiy和Etag，服务器决定是否重新获取数据给浏览器
+		// 如果两者中任意一个没有改变，那么返回304，使用浏览器内的缓存
+		$content = file_get_contents('hw.txt');
+		return $this->renderPartial('index',['newCache'=>$content]);
+	}
+
 	// model
 	function actionTestMd()
 	{
