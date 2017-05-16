@@ -45,7 +45,7 @@
 >* `git push origin:refs/tags/<tagname>`	远程删除标签
 >* `git config --global alias.st status`	创建别名
 
-####搭建git服务器
+### 搭建git服务器
 >* 1.`sudo apt-get install git`
 >* 2.`sudo adduser git`	创建git用户
 >* 3.收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，
