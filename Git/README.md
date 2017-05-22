@@ -17,13 +17,21 @@
 >* `git checkout -- <file>`	撤销修改
 >* `git checkout <dev>`	切换到dev分支
 >* `git rm <file>`	删除文件
+>* `git remote`	-v	列出所有远程主机
+>* `git remote show <主机名>`	查看该主机的详细信息
+>* `git remote add <主机名> <网址>`	添加远程主机
 >* `git remote add origin git@server-name:path/repo-name.git`	关联一个远程文件库
+>* `git remote rm <主机名>`	删除远程主机
+>* `git remote rename`	
 >* `git push -u origin master`	推送master代码库
 >* `git clone <url>`	从远程克隆一个项目
 >* `git checkout -b <dev>`	创建并切换分支    
 	相当于`git branch dev`&`git checkout dev`
 >* `git branch`	查看分支
+>* `git branch` -r	查看远端分支
+>* `git branch` -a	查看所有分支
 >* `git merge <dev>`	合并分支
+>* `git merge origin/master`	
 >* `git branch -d <dev>`	删除分支
 >* `git log --graph --pretty=oneline --abbrev-commit`	查看分支的合并情况
 >* `git merge --no-ff -m "merge with no-ff" dev`	禁用Fast forward模式
@@ -39,6 +47,7 @@
 >* `git show <tagname>`	查看指定标签
 >* `git tag -a <tagname> -m "blablabla..."`	可以指定标签信息
 >* `git tag -s <tagname> -m "blablabla..."`	可以用PGP签名标签
+>* `git fetch <远程主机名> <分支名>` 更新远端分支，如`git fetch origin master`
 >* `git push origin <tagname>`	推送标签
 >* `git push origin --tags`	推送全部标签
 >* `git tag -d <tagname>`	删除本地标签
