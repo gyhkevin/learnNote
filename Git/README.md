@@ -53,6 +53,7 @@
 >* `git tag -d <tagname>`	删除本地标签
 >* `git push origin:refs/tags/<tagname>`	远程删除标签
 >* `git config --global alias.st status`	创建别名
+>* `git rm -r --cached .`	remove cached for gitignore
 
 ### 搭建git服务器
 >* 1.`sudo apt-get install git`
